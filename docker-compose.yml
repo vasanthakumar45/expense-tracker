@@ -1,0 +1,31 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: expenses
+      POSTGRES_USER: expuser
+      POSTGRES_PASSWORD: exppass
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U expuser -d expenses"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  api:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      APP_ENV: compose
+      DB_HOST: db
+      DB_NAME: expenses
+      DB_USER: expuser
+      DB_PASSWORD: exppass
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  db-data:
