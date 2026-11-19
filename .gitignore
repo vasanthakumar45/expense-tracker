@@ -5,3 +5,4 @@ __pycache__/
 *.pem
 *.csv
 aws/ids.env
+aws/taskdef.json
