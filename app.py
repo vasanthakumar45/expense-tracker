@@ -69,7 +69,7 @@ def health():
 
 @app.route("/version")
 def version():
-    return jsonify(env=APP_ENV, version="v1")
+    return jsonify(env=APP_ENV, version=os.getenv("APP_VERSION", "v1"))
 
 
 @app.route("/expenses", methods=["POST"])

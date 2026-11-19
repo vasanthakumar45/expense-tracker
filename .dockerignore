@@ -1,6 +1,10 @@
 venv
+.venv
 __pycache__
 .pytest_cache
 .git
 .env
 test_app.py
+aws
+scripts
+Jenkinsfile
