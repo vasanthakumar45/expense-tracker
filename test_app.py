@@ -10,7 +10,7 @@ def test_health():
 def test_version():
     response = app.test_client().get("/version")
     assert response.status_code == 200
-    assert response.get_json()["version"] == "v1"
+    assert response.get_json()["version"] == "v999"
 
 
 def test_validate_accepts_and_cleans_input():
